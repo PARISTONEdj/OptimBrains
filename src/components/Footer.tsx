@@ -1,16 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Mail } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import logo from "../images/Logo.png";
+import { Facebook, Linkedin, Twitter, Instagram, Mail, CircleDollarSign } from "lucide-react";
+import { FaFacebook, FaLinkedin, FaTwitter, FaInstagram, FaEnvelope, FaTiktok } from "react-icons/fa";
+
 
 const Footer = () => {
+  const location = useLocation(); // Ajout de useLocation pour récupérer le pathname
+  
   return (
-    <footer className="bg-navy-800 text-white py-12">
+    <footer className="bg-navy-900 text-white py-12">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Logo and Description */}
           <div className="col-span-1 md:col-span-2">
             <img 
-              src="https://raw.githubusercontent.com/stackblitz/stackblitz-webcontainer-core-internal/main/turbo/examples/basic/apps/web/public/optimbrains-logo.png" 
+              src={logo}
               alt="OptimBrains" 
               className="h-12 mb-4"
             />
@@ -23,10 +28,47 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Navigation</h3>
             <ul className="space-y-2">
-              <li><Link to="/" className="text-gray-300 hover:text-blue-400 transition-colors">Accueil</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-blue-400 transition-colors">Services</Link></li>
-              <li><Link to="/about" className="text-gray-300 hover:text-blue-400 transition-colors">À Propos</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-blue-400 transition-colors">Contact</Link></li>
+              <li>
+                <Link
+                  to="/"
+                  className={`transition-colors ${location.pathname === '/' ? 'text-blue-400' : 'text-gray-300 hover:text-blue-400'}`}
+                >
+                  Accueil
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services"
+                  className={`transition-colors ${location.pathname === '/services' ? 'text-blue-400' : 'text-gray-300 hover:text-blue-400'}`}
+                >
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/about"
+                  className={`transition-colors ${location.pathname === '/about' ? 'text-blue-400' : 'text-gray-300 hover:text-blue-400'}`}
+                >
+                  À Propos
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/blog"
+                  className={`transition-colors ${location.pathname === '/blog' ? 'text-blue-400' : 'text-gray-300 hover:text-blue-400'}`}
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className={`transition-colors ${location.pathname === '/contact' ? 'text-blue-400' : 'text-gray-300 hover:text-blue-400'}`}
+                >
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -48,6 +90,15 @@ const Footer = () => {
                 </button>
               </div>
             </form>
+            <div className="flex space-x-4 mt-10">
+              <a href="https://www.facebook.com/optimbrains"> <FaFacebook size={24} />
+              </a>
+              <a href="https://www.linkedin.com/company/106504123/admin/page-posts/published/"> <FaLinkedin size={24} /> </a>
+              <a href="https://x.com/OPTIMBRAINS"> <FaTwitter size={24} /> </a>
+              <a href="https://www.instagram.com/optimbrains/"> <FaInstagram size={24} /> </a>
+              <a href="mailto:optimbrains@gmail.com">  <FaEnvelope size={24} /> </a>
+              <a href="https://www.tiktok.com/@optimbrains"> <FaTiktok size={24} /> </a>
+          </div>
           </div>
         </div>
 

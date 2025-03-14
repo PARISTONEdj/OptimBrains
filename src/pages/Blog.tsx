@@ -1,5 +1,7 @@
 import React from 'react';
 import type { BlogPost } from '../types';
+import blogimage from "../images/simpleimage.avif";
+import AfterHeader from '../components/Afterheader';
 
 const Blog = () => {
   const posts: BlogPost[] = [
@@ -38,7 +40,9 @@ const Blog = () => {
   return (
     <div className="pt-24 px-6">
       <div className="container mx-auto">
-        <h1 className="text-4xl font-bold text-white mb-12 text-center">Blog</h1>
+
+        <AfterHeader titre={'Blog'} description={''} imageURL={blogimage}/>
+        {/* <h1 className="text-4xl font-bold text-white mb-12 text-center">Blog</h1> */}
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (

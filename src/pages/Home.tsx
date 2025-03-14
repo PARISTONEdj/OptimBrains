@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import IA_Automatisation from '../images/IA_gif.gif';
+import Accueilcontent from '../components/Accueilcontent';
 
 const Home = () => {
   const features = [
@@ -78,6 +79,8 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      <Accueilcontent/>
 
       {/* CTA Section */}
       <div className="py-20">

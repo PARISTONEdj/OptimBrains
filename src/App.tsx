@@ -7,9 +7,11 @@ import Services from './pages/Services';
 import About from './pages/About';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+import { motion } from "framer-motion";
 
 function App() {
   return (
+    
     <Router>
       <div className="min-h-screen bg-navy-900 flex flex-col">
         <Header />

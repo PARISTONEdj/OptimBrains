@@ -1,7 +1,12 @@
 import React from 'react';
 import { Brain, LineChart, Users, Database, Lightbulb, GraduationCap } from 'lucide-react';
+import IAImage from "../images/IAImage.jpg";
+import AfterHeader from '../components/Afterheader';
+import serviceImage from "../images/Support.jpeg";
+import AIGIF from "../images/Intelligence_Artificielle.gif";
+import Servicecontent from '../components/Servicecontent';
 
-const Services = () => {
+function Services() {
   const services = [
     {
       icon: <Brain className="h-12 w-12 text-blue-400" />,
@@ -37,15 +42,20 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-navy-900">
+
       <div className="relative py-24 px-6">
+
+        <AfterHeader titre={'Nos Services'} 
+        description={'Découvrez comment nos solutions technologiques peuvent transformer votre entreprise et stimuler sa croissance.'} 
+        imageURL={AIGIF}/>
         {/* Hero Section */}
-        <div className="container mx-auto mb-16 text-center">
+        {/* <div className="container mx-auto mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Nos Services</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Découvrez comment nos solutions technologiques peuvent transformer votre entreprise et stimuler sa croissance.
           </p>
-        </div>
-        
+        </div> */}
+
         {/* Services Grid */}
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -79,6 +89,8 @@ const Services = () => {
           </div>
         </div>
 
+        <Servicecontent/>
+
         {/* Newsletter Section */}
         <div className="container mx-auto mt-20">
           <div className="bg-navy-800 rounded-2xl p-8 md:p-12">
@@ -93,8 +105,7 @@ const Services = () => {
                 <input
                   type="email"
                   placeholder="Votre adresse email"
-                  className="flex-1 px-6 py-3 rounded-full bg-navy-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500"
-                />
+                  className="flex-1 px-6 py-3 rounded-full bg-navy-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500" />
                 <button
                   type="submit"
                   className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full transition-colors"
@@ -108,6 +119,6 @@ const Services = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Services;
