@@ -3,10 +3,11 @@ import { CheckCircle, Users } from 'lucide-react';
 import AfterHeader from '../components/Afterheader';
 import Aboutimage from "../images/simpleimage.avif";
 import IAImage from "../images/IAImage.jpg";
+import { useNavigate } from 'react-router-dom';
 
 const About = () => {
 
-  
+  const navigate = useNavigate();
 
   return (
 
@@ -58,9 +59,14 @@ const About = () => {
               <p className="text-gray-300 mb-8">
                 Si vous recherchez un partenaire capable de vous fournir des solutions IA et d'optimisation adaptées pour améliorer votre efficacité, augmenter vos conversions et générer davantage de revenus, nous sommes là pour vous accompagner !
               </p>
-              <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full transition-colors">
+              <button
+                onClick={() => {
+                    window.open("https://wa.me/22891262289", "_blank");
+                }}
+                className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full transition-colors"
+                >
                 Discutez avec un expert
-              </button>
+                </button>
             </div>
           </div>
         </div>

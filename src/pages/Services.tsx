@@ -5,8 +5,10 @@ import AfterHeader from '../components/Afterheader';
 import serviceImage from "../images/Support.jpeg";
 import AIGIF from "../images/Intelligence_Artificielle.gif";
 import Servicecontent from '../components/Servicecontent';
+import { useNavigate } from 'react-router-dom';
 
 function Services() {
+  const navigate = useNavigate();
   const services = [
     {
       icon: <Brain className="h-12 w-12 text-blue-400" />,
@@ -43,7 +45,7 @@ function Services() {
   return (
     <div className="min-h-screen bg-navy-900">
 
-      <div className="relative py-24 px-6">
+      <div className="relative py-24 ">
 
         <AfterHeader titre={'Nos Services'} 
         description={'Découvrez comment nos solutions technologiques peuvent transformer votre entreprise et stimuler sa croissance.'} 
@@ -57,7 +59,7 @@ function Services() {
         </div> */}
 
         {/* Services Grid */}
-        <div className="container mx-auto">
+        <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <div key={index} className="bg-navy-800 p-8 rounded-lg hover:transform hover:scale-105 transition-transform">
@@ -70,7 +72,7 @@ function Services() {
         </div>
 
         {/* CTA Section */}
-        <div className="container mx-auto mt-20">
+        <div className="container mx-auto mt-20 px-6 mb-10">
           <div className="bg-navy-800 rounded-2xl p-8 md:p-12 text-center">
             <h2 className="text-3xl font-bold text-white mb-6">
               Avez-vous un projet en tête?
@@ -79,7 +81,10 @@ function Services() {
               Nous pouvons vous aider à concrétiser vos idées. Discutons de ce que nous pouvons créer ensemble et faire grandir grâce à l'IA.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full transition-colors">
+              <button onClick={()=>{
+                navigate("/contact")
+              }}
+               className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full transition-colors">
                 Contactez-nous
               </button>
               <button className="border border-white/20 hover:border-blue-400 text-white px-8 py-3 rounded-full transition-colors">
@@ -92,7 +97,7 @@ function Services() {
         <Servicecontent/>
 
         {/* Newsletter Section */}
-        <div className="container mx-auto mt-20">
+        <div className="container mx-auto mt-20 px-6">
           <div className="bg-navy-800 rounded-2xl p-8 md:p-12">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="text-3xl font-bold text-white mb-6">

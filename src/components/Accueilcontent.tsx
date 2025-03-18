@@ -5,9 +5,10 @@ import { ArrowRight } from 'lucide-react';
 import gallery1 from "../images/gallery-1.jpg";
 import gallery2 from "../images/gallery-2.jpg";
 import gallery3 from "../images/gallery-3.jpg";
-
+import { useNavigate } from 'react-router-dom';
 
 function Accueilcontent() {
+  const navigate = useNavigate();
     return (
         <div>
           <div className="bg-white h-[100px]" />
@@ -27,7 +28,10 @@ function Accueilcontent() {
     <p className="text-base lg:text-lg mt-4">
       Nous pouvons vous aider à concrétiser vos idées. Discutons de ce que nous pouvons créer ensemble et faire grandir grâce à l'IA.
     </p>
-    <button className="mt-6 lg:mt-20 bg-gray-500 text-white px-6 py-3 border border-black text-lg flex items-center w-[250px] mx-auto lg:mx-0">
+    <button onClick={()=>{
+      navigate("/contact")
+    }}
+     className="mt-6 lg:mt-20 bg-gray-500 text-white px-6 py-3 border border-black text-lg flex items-center w-[250px] mx-auto lg:mx-0">
       Contactez-nous 
       <ArrowRight className="ml-2" size={20} />
     </button>

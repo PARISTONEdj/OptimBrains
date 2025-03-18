@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import IA_Automatisation from '../images/IA_gif.gif';
 import Accueilcontent from '../components/Accueilcontent';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const features = [
@@ -18,6 +19,8 @@ const Home = () => {
       description: "Un suivi sur mesure pour garantir le succès de votre transformation digitale."
     }
   ];
+
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-navy-900">
@@ -49,7 +52,11 @@ const Home = () => {
                 Demander une démo
                 <ArrowRight className="ml-2 h-5 w-5" />
               </button>
-              <button className="border border-white/20 hover:border-blue-400 text-white px-8 py-3 rounded-full flex items-center justify-center transition-colors">
+              <button 
+              onClick={()=>{
+                  navigate("/services");
+              }}
+              className="border border-white/20 hover:border-blue-400 text-white px-8 py-3 rounded-full flex items-center justify-center transition-colors">
                 Nos services
               </button>
             </div>
@@ -92,7 +99,9 @@ const Home = () => {
             <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
               Découvrez comment OptimBrains peut vous aider à optimiser vos processus et à prendre de meilleures décisions grâce à l'IA.
             </p>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full transition-colors">
+            <button onClick={()=>{
+              navigate("/contact")
+            }} className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full transition-colors">
               Contactez-nous
             </button>
           </div>
