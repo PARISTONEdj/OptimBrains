@@ -3,6 +3,8 @@ import { ArrowRight, CheckCircle } from 'lucide-react';
 import IA_Automatisation from '../images/IA_gif.gif';
 import Accueilcontent from '../components/Accueilcontent';
 import { useNavigate } from 'react-router-dom';
+import iagif from "../images/IA_gif.gif";
+
 
 const Home = () => {
   const features = [
@@ -29,7 +31,7 @@ const Home = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center z-0"
           style={{
-             backgroundImage: `url(/src/images/IA_gif.gif)` 
+             backgroundImage: `url(${iagif})`
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-navy-900/95 to-navy-900/80"></div>
