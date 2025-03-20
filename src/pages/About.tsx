@@ -4,6 +4,7 @@ import AfterHeader from '../components/Afterheader';
 import Aboutimage from "../images/simpleimage.avif";
 import IAImage from "../images/IAImage.jpg";
 import { useNavigate } from 'react-router-dom';
+import gifAccuiel from "../images/gifAccuiel.gif";
 
 const About = () => {
 

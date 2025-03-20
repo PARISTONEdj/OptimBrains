@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Brain, LineChart, Users, Database, Lightbulb, GraduationCap } from 'lucide-react';
 import IAImage from "../images/IAImage.jpg";
 import AfterHeader from '../components/Afterheader';
@@ -6,9 +6,38 @@ import serviceImage from "../images/Support.jpeg";
 import AIGIF from "../images/Intelligence_Artificielle.gif";
 import Servicecontent from '../components/Servicecontent';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Services() {
   const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+  
+    const abonnement = async (e: React.FormEvent) => {
+      e.preventDefault(); // Correction de e.preventedDefault()
+  
+      if (!email) {
+        setMessage("Veuillez entrer un email valide.");
+        return;
+      }
+  
+      try {
+        const response = await axios.post("https://apioptimbrains.onrender.com/abonnement", {
+          email: email,
+        });
+  
+        setMessage(response.data.message); // Afficher le message de succès
+        setEmail(""); // Réinitialiser l'input après abonnement
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          setMessage(error.response?.data?.message || "Erreur lors de l'abonnement");
+        } else {
+          setMessage("Une erreur inconnue est survenue.");
+        }
+      }
+    };
+    
   const services = [
     {
       icon: <Brain className="h-12 w-12 text-blue-400" />,
@@ -106,8 +135,10 @@ function Services() {
               <p className="text-gray-300 mb-8">
                 Souscrivez à notre Newsletter pour recevoir nos dernières actualités et conseils en IA et optimisation.
               </p>
-              <form className="flex flex-col sm:flex-row gap-4">
+              <form className="flex flex-col sm:flex-row gap-4" onSubmit={abonnement}>
                 <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   placeholder="Votre adresse email"
                   className="flex-1 px-6 py-3 rounded-full bg-navy-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500" />
@@ -118,6 +149,8 @@ function Services() {
                   S'abonner
                 </button>
               </form>
+              {message && <p className='text-white mt-5'>{message}</p>}
+
             </div>
           </div>
         </div>

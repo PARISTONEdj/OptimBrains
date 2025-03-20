@@ -18,7 +18,7 @@ const Contact = () => {
     setStatus('Envoi en cours...');
 
     try {
-      const response = await axios.post('http://localhost:5000/send-email', formData);
+      const response = await axios.post('https://apioptimbrains.onrender.com/send-email', formData);
       if (response.data.success) {
         setStatus('Message envoyé avec succès !');
         setFormData({ name: '', email: '', message: '' });

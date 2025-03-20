@@ -4,7 +4,7 @@ import IA_Automatisation from '../images/IA_gif.gif';
 import Accueilcontent from '../components/Accueilcontent';
 import { useNavigate } from 'react-router-dom';
 import iagif from "../images/IA_gif.gif";
-
+import { motion } from "framer-motion";
 
 const Home = () => {
   const features = [
@@ -25,7 +25,8 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-navy-900">
+    <div 
+      className="min-h-screen bg-navy-900">
       {/* Hero Section */}
       <div className="relative min-h-screen flex items-center">
         <div 

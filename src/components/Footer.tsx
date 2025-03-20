@@ -1,12 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from "../images/Logo.png";
 import { Facebook, Linkedin, Twitter, Instagram, Mail, CircleDollarSign } from "lucide-react";
 import { FaFacebook, FaLinkedin, FaTwitter, FaInstagram, FaEnvelope, FaTiktok } from "react-icons/fa";
-
+import axios from 'axios';
 
 const Footer = () => {
-  const location = useLocation(); // Ajout de useLocation pour récupérer le pathname
+  const location = useLocation(); 
+
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const abonnement = async (e: React.FormEvent) => {
+    e.preventDefault(); // Correction de e.preventedDefault()
+
+    if (!email) {
+      setMessage("Veuillez entrer un email valide.");
+      return;
+    }
+
+    try {
+      const response = await axios.post("https://apioptimbrains.onrender.com/abonnement", {
+        email: email,
+      });
+
+      setMessage(response.data.message); // Afficher le message de succès
+      setEmail(""); // Réinitialiser l'input après abonnement
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setMessage(error.response?.data?.message || "Erreur lors de l'abonnement");
+      } else {
+        setMessage("Une erreur inconnue est survenue.");
+      }
+    }
+  };
+
   
   return (
     <footer className="bg-navy-900 text-white py-12">
@@ -75,9 +103,11 @@ const Footer = () => {
           {/* Newsletter */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={abonnement}>
               <div className="flex">
                 <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   placeholder="Votre email"
                   className="flex-1 px-4 py-2 rounded-l-lg bg-navy-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500"
@@ -90,6 +120,7 @@ const Footer = () => {
                 </button>
               </div>
             </form>
+            {message && <p>{message}</p>}
             <div className="flex space-x-4 mt-10">
               <a href="https://www.facebook.com/optimbrains"> <FaFacebook size={24} />
               </a>
