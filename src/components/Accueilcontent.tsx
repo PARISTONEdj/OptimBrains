@@ -6,8 +6,12 @@ import gallery1 from "../images/gallery-1.jpg";
 import gallery2 from "../images/gallery-2.jpg";
 import gallery3 from "../images/gallery-3.jpg";
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function Accueilcontent() {
+
+  const images = [gallery1, gallery2, gallery3];
+
   const navigate = useNavigate();
     return (
         <div>
@@ -63,33 +67,64 @@ function Accueilcontent() {
 
 
 
-  <div className="bg-gray-100 p-6 sm:p-10 lg:p-20">
-  <p className="text-xl sm:text-2xl lg:text-2xl font-bold text-center">Vos partenaires de confiance</p>
-  
-  <div className="flex flex-col lg:flex-row space-y-6 lg:space-y-0 p-6 sm:p-10 lg:p-20">
-    {/* Section avec flex interne, texte à gauche */}
-    <div className="flex flex-col space-y-4 flex-1">
-      <div className="text-3xl sm:text-4xl lg:text-5xl text-black text-center lg:text-left">
-        Une équipe compétente, très motivée avec des idées novatrices
-      </div>
-    </div>
+<div className="bg-gray-100 p-6 sm:p-10 lg:p-20">
 
-    {/* Texte justifié, section à droite */}
-    <div className="flex flex-col flex-1 text-base sm:text-lg lg:text-xl text-gray-700 text-justify lg:text-left">
-      Nous aimons ce que nous faisons et, par conséquent, nous trouvons les meilleures solutions possibles pour vous aider à prendre de meilleures décisions pour la croissance de votre entreprise. Nous sommes vos partenaires de confiance sur lesquels vous pouvez compter.
+<p className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-center text-gray-900 tracking-wide">
+  🚀 Vos <span className="text-blue-500">partenaires de confiance</span>
+</p>
+
+  
+  <div className="flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 p-6 sm:p-10 lg:p-20 bg-gray-100 rounded-xl shadow-lg">
+      {/* Texte principal avec animation */}
+      <motion.div
+        className="flex-1 text-center lg:text-left"
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
+          Une équipe <span className="text-blue-500">compétente</span>, motivée  avec des idées novatrices
+        </h2>
+      </motion.div>
+
+      {/* Texte secondaire avec animation */}
+      <motion.div
+        className="flex-1 text-lg sm:text-xl text-gray-700 leading-relaxed text-center lg:text-left"
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <p>
+          Nous aimons ce que nous faisons et trouvons les meilleures solutions possibles pour vous aider à prendre des décisions stratégiques. 
+        </p>
+        <p className="mt-4">
+          Nous sommes vos <span className="text-blue-500 font-semibold">partenaires de confiance</span>, sur lesquels vous pouvez compter.
+        </p>
+      </motion.div>
     </div>
-  </div>
 
   {/* Section d'images avec wrap */}
-  <div className="flex flex-wrap justify-center gap-6 sm:gap-6 lg:gap-8">
-    <img src={gallery1} alt="" className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 object-cover" />
-    <img src={gallery2} alt="" className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 object-cover" />
-    <img src={gallery3} alt="" className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 object-cover" />
-  </div>
+  <div className="flex flex-wrap justify-center gap-6 sm:gap-6 lg:gap-8 mt-10">
+      {images.map((src, index) => (
+        <motion.img
+          key={index}
+          src={src}
+          alt={`Gallery ${index + 1}`}
+          className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 object-cover rounded-lg shadow-lg"
+          initial={{ opacity: 0, scale: 0.8, y: 50 }} 
+          whileInView={{ opacity: 1, scale: 1, y: 0 }} 
+          transition={{
+            duration: 0.6,
+            delay: index * 0.3, 
+            ease: "easeOut",
+          }}
+          viewport={{ once: false, amount: 0.2 }} 
+        />
+      ))}
+    </div>
 </div>
-
-
-
 
 
         </div>

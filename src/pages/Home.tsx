@@ -25,7 +25,10 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div 
+    <motion.div 
+      initial={{opacity : 0}}
+      animate={{opacity : 1}}
+      exit={{opacity : 0}}
       className="min-h-screen bg-navy-900">
       {/* Hero Section */}
       <div className="relative min-h-screen flex items-center">
@@ -80,11 +83,20 @@ const Home = () => {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="bg-navy-900 p-8 rounded-lg">
+              <motion.div key={index}
+              initial={{ opacity: 0, scale: 0.8, y: 50 }} 
+          whileInView={{ opacity: 1, scale: 1, y: 0 }} 
+          transition={{
+            duration: 0.6,
+            delay: index * 0.3, 
+            ease: "easeOut",
+          }}
+          viewport={{ once: false, amount: 0.2 }}
+               className="bg-navy-900 p-8 rounded-lg">
                 <CheckCircle className="h-12 w-12 text-blue-400 mb-6" />
                 <h3 className="text-xl font-semibold text-white mb-4">{feature.title}</h3>
                 <p className="text-gray-300">{feature.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -110,7 +122,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

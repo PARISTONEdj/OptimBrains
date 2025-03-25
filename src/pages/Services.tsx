@@ -7,6 +7,7 @@ import AIGIF from "../images/Intelligence_Artificielle.gif";
 import Servicecontent from '../components/Servicecontent';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 function Services() {
   const navigate = useNavigate();
@@ -72,7 +73,11 @@ function Services() {
   ];
 
   return (
-    <div className="min-h-screen bg-navy-900">
+    <motion.div
+    initial={{opacity : 0}}
+    animate={{opacity : 1}}
+    exit={{opacity : 0}}
+     className="min-h-screen bg-navy-900">
 
       <div className="relative py-24 ">
 
@@ -91,11 +96,20 @@ function Services() {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="bg-navy-800 p-8 rounded-lg hover:transform hover:scale-105 transition-transform">
+              <motion.div key={index}
+              initial={{ opacity: 0, scale: 0.8, y: 50 }} 
+              whileInView={{ opacity: 1, scale: 1, y: 0 }} 
+              transition={{
+                duration: 0.6,
+                delay: index * 0.3, 
+                ease: "easeOut",
+              }}
+              viewport={{ once: false, amount: 0.2 }}
+               className="bg-navy-800 p-8 rounded-lg hover:transform hover:scale-105 transition-transform">
                 <div className="mb-6">{service.icon}</div>
                 <h3 className="text-2xl font-semibold text-white mb-4">{service.title}</h3>
                 <p className="text-gray-300">{service.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -155,7 +169,7 @@ function Services() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

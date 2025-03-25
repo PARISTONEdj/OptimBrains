@@ -2,6 +2,7 @@ import React from 'react';
 import type { BlogPost } from '../types';
 import blogimage from "../images/simpleimage.avif";
 import AfterHeader from '../components/Afterheader';
+import { motion } from 'framer-motion';
 
 const Blog = () => {
   const posts: BlogPost[] = [
@@ -38,7 +39,11 @@ const Blog = () => {
   ];
 
   return (
-    <div className="pt-24 px-6">
+    <motion.div
+    initial={{opacity : 0}}
+    animate={{opacity : 1}}
+    exit={{opacity : 0}}
+     className="pt-24 px-6">
       <div className="container mx-auto">
 
         <AfterHeader titre={'Blog'} description={''} imageURL={blogimage}/>
@@ -61,7 +66,7 @@ const Blog = () => {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

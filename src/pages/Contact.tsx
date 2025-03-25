@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 import inteligence from "../images/intelligence-artificielle-2-v.jpg";
 import AfterHeader from '../components/Afterheader';
 import MapFrame from '../components/MapFrame';
+import {motion} from "framer-motion";
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -31,7 +32,11 @@ const Contact = () => {
   };
 
   return (
-    <div className="pt-24 px-6">
+    <motion.div 
+    initial={{opacity : 0}}
+    animate={{opacity : 1}}
+    exit={{opacity : 0}}
+    className="pt-24 px-6">
       <div className="container mx-auto">
         <AfterHeader titre={'Contactez-nous'} description={''} imageURL={inteligence} />
         <h1 className="text-4xl font-bold text-white mb-12 text-center">Contactez-nous</h1>
@@ -133,7 +138,7 @@ const Contact = () => {
       </div>
 
       <MapFrame latitude={6.2062592} longitude={1.1862016} />
-    </div>
+    </motion.div>
   );
 };
 
