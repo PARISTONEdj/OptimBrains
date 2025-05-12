@@ -51,7 +51,7 @@ const Header = () => {
             <Link
               to="/blog"
               onClick={handleLinkClick}
-              className={`transition-colors ${location.pathname === '/blog' ? 'text-blue-400' : 'text-white hover:text-blue-400'}`}
+              className={`transition-colors ${location.pathname.startsWith('/blog') ? 'text-blue-400' : 'text-gray-300 hover:text-blue-400'}`}
             >
               Blog
             </Link>
@@ -62,9 +62,9 @@ const Header = () => {
             >
               Contact
             </Link>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full transition-colors">
+            {/* <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full transition-colors">
               Démonstration
-            </button>
+            </button> */}
           </div>
 
           {/* Mobile menu button, visible en dessous de 1035px */}

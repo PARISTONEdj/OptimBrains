@@ -4,6 +4,7 @@ import IA_Automatisation from '../images/IA_gif.gif';
 import Accueilcontent from '../components/Accueilcontent';
 import { useNavigate } from 'react-router-dom';
 import iagif from "../images/IA_gif.gif";
+import monitor from "../images/monitor.jpg";
 import { motion } from "framer-motion";
 
 const Home = () => {
@@ -54,10 +55,10 @@ const Home = () => {
               d'IA sur mesure et nos expertises en optimisation de production.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full flex items-center justify-center transition-colors">
+              {/* <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full flex items-center justify-center transition-colors">
                 Demander une démo
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
+              </button> */}
               <button 
               onClick={()=>{
                   navigate("/services");

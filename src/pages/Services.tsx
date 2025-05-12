@@ -4,6 +4,7 @@ import IAImage from "../images/IAImage.jpg";
 import AfterHeader from '../components/Afterheader';
 import serviceImage from "../images/Support.jpeg";
 import AIGIF from "../images/Intelligence_Artificielle.gif";
+import serviceP from "../images/serviceP.jpg";
 import Servicecontent from '../components/Servicecontent';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -13,32 +14,32 @@ function Services() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
-  
-    const abonnement = async (e: React.FormEvent) => {
-      e.preventDefault(); // Correction de e.preventedDefault()
-  
-      if (!email) {
-        setMessage("Veuillez entrer un email valide.");
-        return;
+  const [message, setMessage] = useState("");
+
+  const abonnement = async (e: React.FormEvent) => {
+    e.preventDefault(); // Correction de e.preventedDefault()
+
+    if (!email) {
+      setMessage("Veuillez entrer un email valide.");
+      return;
+    }
+
+    try {
+      const response = await axios.post("https://apioptimbrains.onrender.com/abonnement", {
+        email: email,
+      });
+
+      setMessage(response.data.message); // Afficher le message de succès
+      setEmail(""); // Réinitialiser l'input après abonnement
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setMessage(error.response?.data?.message || "Erreur lors de l'abonnement");
+      } else {
+        setMessage("Une erreur inconnue est survenue.");
       }
-  
-      try {
-        const response = await axios.post("https://apioptimbrains.onrender.com/abonnement", {
-          email: email,
-        });
-  
-        setMessage(response.data.message); // Afficher le message de succès
-        setEmail(""); // Réinitialiser l'input après abonnement
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          setMessage(error.response?.data?.message || "Erreur lors de l'abonnement");
-        } else {
-          setMessage("Une erreur inconnue est survenue.");
-        }
-      }
-    };
-    
+    }
+  };
+
   const services = [
     {
       icon: <Brain className="h-12 w-12 text-blue-400" />,
@@ -74,16 +75,16 @@ function Services() {
 
   return (
     <motion.div
-    initial={{opacity : 0}}
-    animate={{opacity : 1}}
-    exit={{opacity : 0}}
-     className="min-h-screen bg-navy-900">
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="min-h-screen bg-navy-900">
 
       <div className="relative py-24 ">
 
-        <AfterHeader titre={'Nos Services'} 
-        description={'Découvrez comment nos solutions technologiques peuvent transformer votre entreprise et stimuler sa croissance.'} 
-        imageURL={AIGIF}/>
+        <AfterHeader titre={'Nos Services'}
+          description={'Découvrez comment nos solutions technologiques peuvent transformer votre entreprise et stimuler sa croissance.'}
+          imageURL={serviceP} />
         {/* Hero Section */}
         {/* <div className="container mx-auto mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Nos Services</h1>
@@ -97,15 +98,15 @@ function Services() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <motion.div key={index}
-              initial={{ opacity: 0, scale: 0.8, y: 50 }} 
-              whileInView={{ opacity: 1, scale: 1, y: 0 }} 
-              transition={{
-                duration: 0.6,
-                delay: index * 0.3, 
-                ease: "easeOut",
-              }}
-              viewport={{ once: false, amount: 0.2 }}
-               className="bg-navy-800 p-8 rounded-lg hover:transform hover:scale-105 transition-transform">
+                initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.3,
+                  ease: "easeOut",
+                }}
+                viewport={{ once: false, amount: 0.2 }}
+                className="bg-navy-800 p-8 rounded-lg hover:transform hover:scale-105 transition-transform">
                 <div className="mb-6">{service.icon}</div>
                 <h3 className="text-2xl font-semibold text-white mb-4">{service.title}</h3>
                 <p className="text-gray-300">{service.description}</p>
@@ -124,20 +125,24 @@ function Services() {
               Nous pouvons vous aider à concrétiser vos idées. Discutons de ce que nous pouvons créer ensemble et faire grandir grâce à l'IA.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button onClick={()=>{
+              <button onClick={() => {
                 navigate("/contact")
               }}
-               className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full transition-colors">
+                className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full transition-colors">
                 Contactez-nous
               </button>
-              <button className="border border-white/20 hover:border-blue-400 text-white px-8 py-3 rounded-full transition-colors">
+              <button
+                onClick={() => {
+                  window.open("https://wa.me/22892439252", "_blank");
+                }}
+                className="border border-white/20 hover:border-blue-400 text-white px-8 py-3 rounded-full transition-colors">
                 En savoir plus
               </button>
             </div>
           </div>
         </div>
 
-        <Servicecontent/>
+        <Servicecontent />
 
         {/* Newsletter Section */}
         <div className="container mx-auto mt-20 px-6">

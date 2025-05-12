@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from "../images/Logo.png";
-import { Facebook, Linkedin, Twitter, Instagram, Mail, CircleDollarSign } from "lucide-react";
+import { Mail } from "lucide-react";
 import { FaFacebook, FaLinkedin, FaTwitter, FaInstagram, FaEnvelope, FaTiktok } from "react-icons/fa";
 import axios from 'axios';
 
 const Footer = () => {
-  const location = useLocation(); 
+  const location = useLocation();
 
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -20,7 +20,7 @@ const Footer = () => {
     }
 
     try {
-      const response = await axios.post("https://apioptimbrains.onrender.com/abonnement", {
+      const response = await axios.post("https://apioptimbrains.onrender.com/api/subscribers/abonnement", {
         email: email,
       });
 
@@ -35,17 +35,17 @@ const Footer = () => {
     }
   };
 
-  
+
   return (
     <footer className="bg-navy-900 text-white py-12">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Logo and Description */}
           <div className="col-span-1 md:col-span-2">
-            <img 
+            <img
               src={logo}
-              alt="OptimBrains" 
-              className="h-12 mb-4"
+              alt="OptimBrains"
+              className="h-20 mb-4"
             />
             <p className="text-gray-300 mb-4">
               OPTIMISER, DÉCIDER, INNOVER
@@ -84,7 +84,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/blog"
-                  className={`transition-colors ${location.pathname === '/blog' ? 'text-blue-400' : 'text-gray-300 hover:text-blue-400'}`}
+                  className={`transition-colors ${location.pathname.startsWith('/blog') ? 'text-blue-400' : 'text-gray-300 hover:text-blue-400'}`}
                 >
                   Blog
                 </Link>
@@ -129,7 +129,7 @@ const Footer = () => {
               <a href="https://www.instagram.com/optimbrains/"> <FaInstagram size={24} /> </a>
               <a href="mailto:optimbrains@gmail.com">  <FaEnvelope size={24} /> </a>
               <a href="https://www.tiktok.com/@optimbrains"> <FaTiktok size={24} /> </a>
-          </div>
+            </div>
           </div>
         </div>
 

@@ -19,7 +19,7 @@ const Contact = () => {
     setStatus('Envoi en cours...');
 
     try {
-      const response = await axios.post('https://apioptimbrains.onrender.com/send-email', formData);
+      const response = await axios.post('https://apioptimbrains.onrender.com/api/messages/send', formData);
       if (response.data.success) {
         setStatus('Message envoyé avec succès !');
         setFormData({ name: '', email: '', message: '' });
@@ -38,7 +38,7 @@ const Contact = () => {
     exit={{opacity : 0}}
     className="pt-24 px-6">
       <div className="container mx-auto">
-        <AfterHeader titre={'Contactez-nous'} description={''} imageURL={inteligence} />
+        <AfterHeader titre={''} description={''} imageURL={inteligence} />
         <h1 className="text-4xl font-bold text-white mb-12 text-center">Contactez-nous</h1>
         
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
