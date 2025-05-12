@@ -26,20 +26,20 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <motion.div 
-      initial={{opacity : 0}}
-      animate={{opacity : 1}}
-      exit={{opacity : 0}}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       className="min-h-screen bg-navy-900">
       {/* Hero Section */}
       <div className="relative min-h-screen flex items-center">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center z-0"
           style={{
-             backgroundImage: `url(${iagif})`
+            backgroundImage: `url(${iagif})`
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-900/95 to-navy-900/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-900/40 to-navy-900/30"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -50,8 +50,8 @@ const Home = () => {
               </span>{' '}
               au service de votre performance
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
-              Optimisez vos processus et maximisez vos résultats grâce à nos solutions 
+            <p className="text-xl text-white/90 mb-8">
+              Optimisez vos processus et maximisez vos résultats grâce à nos solutions
               d'IA sur mesure et nos expertises en optimisation de production.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -59,11 +59,11 @@ const Home = () => {
                 Demander une démo
                 <ArrowRight className="ml-2 h-5 w-5" />
               </button> */}
-              <button 
-              onClick={()=>{
+              <button
+                onClick={() => {
                   navigate("/services");
-              }}
-              className="border border-white/20 hover:border-blue-400 text-white px-8 py-3 rounded-full flex items-center justify-center transition-colors">
+                }}
+                className="border border-white/20 hover:border-blue-400 text-white px-8 py-3 rounded-full flex items-center justify-center transition-colors">
                 Nos services
               </button>
             </div>
@@ -85,15 +85,15 @@ const Home = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <motion.div key={index}
-              initial={{ opacity: 0, scale: 0.8, y: 50 }} 
-          whileInView={{ opacity: 1, scale: 1, y: 0 }} 
-          transition={{
-            duration: 0.6,
-            delay: index * 0.3, 
-            ease: "easeOut",
-          }}
-          viewport={{ once: false, amount: 0.2 }}
-               className="bg-navy-900 p-8 rounded-lg">
+                initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.3,
+                  ease: "easeOut",
+                }}
+                viewport={{ once: false, amount: 0.2 }}
+                className="bg-navy-900 p-8 rounded-lg">
                 <CheckCircle className="h-12 w-12 text-blue-400 mb-6" />
                 <h3 className="text-xl font-semibold text-white mb-4">{feature.title}</h3>
                 <p className="text-gray-300">{feature.description}</p>
@@ -103,7 +103,7 @@ const Home = () => {
         </div>
       </div>
 
-      <Accueilcontent/>
+      <Accueilcontent />
 
       {/* CTA Section */}
       <div className="py-20">
@@ -115,7 +115,7 @@ const Home = () => {
             <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
               Découvrez comment OptimBrains peut vous aider à optimiser vos processus et à prendre de meilleures décisions grâce à l'IA.
             </p>
-            <button onClick={()=>{
+            <button onClick={() => {
               navigate("/contact")
             }} className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full transition-colors">
               Contactez-nous

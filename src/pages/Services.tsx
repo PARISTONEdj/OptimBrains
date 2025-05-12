@@ -5,6 +5,10 @@ import AfterHeader from '../components/Afterheader';
 import serviceImage from "../images/Support.jpeg";
 import AIGIF from "../images/Intelligence_Artificielle.gif";
 import serviceP from "../images/serviceP.jpg";
+import Support from "../images/Support.jpeg";
+import newservice from "../images/newservice.png";
+import news from "../images/news.png";
+
 import Servicecontent from '../components/Servicecontent';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -83,8 +87,12 @@ function Services() {
       <div className="relative py-24 ">
 
         <AfterHeader titre={'Nos Services'}
-          description={'Découvrez comment nos solutions technologiques peuvent transformer votre entreprise et stimuler sa croissance.'}
-          imageURL={serviceP} />
+          description=''
+          // description={'Découvrez comment nos solutions technologiques peuvent transformer votre entreprise et stimuler sa croissance.'}
+          imageURL={news} />
+          {/* <AfterHeader titre={''}
+          description={''}
+          imageURL={Support} /> */}
         {/* Hero Section */}
         {/* <div className="container mx-auto mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Nos Services</h1>
