@@ -4,7 +4,8 @@ import IA_Automatisation from '../images/IA_gif.gif';
 import Accueilcontent from '../components/Accueilcontent';
 import { useNavigate } from 'react-router-dom';
 import iagif from "../images/IA_gif.gif";
-import monitor from "../images/monitor.jpg";
+import gifAccuiel from "../images/gifAccuiel.gif";
+import AI2 from "../images/AI2.jpg";
 import { motion } from "framer-motion";
 
 const Home = () => {
@@ -36,19 +37,19 @@ const Home = () => {
         <div
           className="absolute inset-0 bg-cover bg-center z-0"
           style={{
-            backgroundImage: `url(${iagif})`
+            backgroundImage: `url(${AI2})`
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-900/40 to-navy-900/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-900/50 via-navy-900/40 to-navy-900/30"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-                Intelligence Artificielle
+                L'Intelligence Artificielle
               </span>{' '}
-              au service de votre performance
+              à votre service
             </h1>
             <p className="text-xl text-white/90 mb-8">
               Optimisez vos processus et maximisez vos résultats grâce à nos solutions
