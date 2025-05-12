@@ -74,7 +74,7 @@ function Accueilcontent() {
       <div className="bg-gray-100 p-6 sm:p-10 lg:p-20">
 
         <p className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center text-gray-900 tracking-wide">
-          🚀 Vos <span className="text-blue-500">partenaires de confiance</span>
+          🚀 Votre <span className="text-blue-500">partenaire de confiance</span>
         </p>
 
 
